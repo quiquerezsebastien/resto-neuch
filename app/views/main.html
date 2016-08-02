@@ -1,0 +1,56 @@
+<div class="jumbotron">
+  
+  <img src="images/restoneuch_logo.png" width="90%"></img>
+  <!--<h1 id="top">Restaurants Neuchâtelois</h1>-->
+</div>
+
+  <div class="row">
+    <div class="col-md-5 col-md-offset-7">
+      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Recherche" ng-model="maSel.nom">
+    </div>
+  </div>
+
+  
+<div ng-repeat="el in main.data.restos | filter:maSel track by $index">
+  
+    <div class="row">
+
+     <!-- Afficher les informations des restaurants -->
+     
+        <div class="col-md-6">
+            
+            <h1>{{el.nom}}</h1>
+            <img ng-src="{{el.image[0]}}" alt="{{el.nom}}" width="392" class="img-thumbnail">   
+        </div>
+
+        <div class="col-md-6">
+
+            <h1>&nbsp;</h1>
+
+            <div class="row">
+                <div class="col-lg-7">
+                  <h2>Description</h2>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{el.note}}" aria-valuemin="0" aria-valuemax="10" style="width: {{el.note}}0%;">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+                  <div class="pull-right">
+                    <div id="note">{{el.note}}/10</div>
+                  </div>
+                </div>
+            </div>
+
+          <p>{{el.descrCoupee}}<p>
+          <a class="btn btn-primary" ng-href="#/restaurant/{{el.id}}">Voir les détails<span class="glyphicon glyphicon-chevron-right"></span></a>
+
+        </div>
+
+    </div><br>
+
+</div>

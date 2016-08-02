@@ -1,0 +1,81 @@
+<div class="row">
+
+    <!-- Boutons Home et Impression -->
+    <div class="col-md-6 col-md-offset-6">
+      <!-- pull-right : Placer à droite -->
+      <div class="pull-right">
+        <a class="btn btn-primary" ng-href="#/"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
+        <a class="btn btn-primary" ng-click="restaurant.data.buildMessage({{restaurant.data.unResto}})"><span class="glyphicon glyphicon-print"></span>&nbsp;&nbsp;Imprimer coordonnées</a>
+      </div>
+    </div>
+</div>
+
+<!-- Titre du restaurant -->
+<h1>{{restaurant.data.unResto.nom}}</h1>
+<br>
+
+
+<!-- Description du restaurant -->
+<p>{{restaurant.data.unResto.description}}</p>
+<br>
+
+<!-- Gallerie d'images -->
+<ng-gallery images="restaurant.data.images"></ng-gallery>
+<br><br>
+
+<div class="row">
+  <!-- Liste des spécialités du restaurant -->
+  <div class="col-md-6">
+    <h3>Spécialités</h3>
+    <p ng-repeat="sp in restaurant.data.unResto.specialites track by $index"><span class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;{{sp}}</p>
+  </div>
+  
+  <!-- Note du restaurant -->
+  <div class="col-md-6">
+
+    <h3>Note du restaurant :</h3>
+    <br>
+
+    <div class="row">
+      <!-- Texte au dessus de la progress-bar -->
+      <div class="col-md-6">
+        <div id="note" style="margin-bottom:0px;">Mauvais</div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="pull-right">
+          <div id="note" style="margin-bottom:0px; color:black;">Très bon</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress-bar -->
+    <div class="progress">
+      <a href="" data-toggle="popover" title="Note" data-content="{{restaurant.data.unResto.note}}/10">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{restaurant.data.unResto.note}}" aria-valuemin="0" aria-valuemax="10" style="width: {{restaurant.data.unResto.note}}0%;"></div>
+      </a>
+    </div>
+  </div>
+</div>
+<br><br>
+
+<div class="row">
+  <!-- Informations du restaurant -->
+  <div class="col-md-3">
+    <h2>Contact</h2>
+    <p>
+    {{restaurant.data.unResto.nom}}<br>
+    {{restaurant.data.unResto.rue}}<br>
+    {{restaurant.data.unResto.ville}}<br>
+    {{restaurant.data.unResto.telephone}}<br>
+    </p>
+    <a ng-href="{{restaurant.data.unResto.internet}}" target="_blank">{{restaurant.data.unResto.internet}}</a><br>
+  </div>
+
+  <!-- Localisation Google Map -->
+  <div class="col-md-9">
+    <iframe src="{{restaurant.data.map}}" width="100%" frameborder="1" style="borde:0; border-color:black; margin-top:10px;" allowfullscreen></iframe>
+    <br><br>
+  </div>
+</div>
+
